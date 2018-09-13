@@ -1,0 +1,95 @@
+html, body{
+    margin :0;
+    padding : 0;
+    background: dimgrey;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.error{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+/*  $   Login
+    ***********/
+    body > .loginPanel {
+        display: flex;
+        flex-direction: column;
+        background: #23406d;
+        color: white;
+        min-height: 90px;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        justify-content: center;
+        border: 1px solid #1d3f73;
+        box-shadow: 0 0 4px 2px hsl(216, 37%, 31%);
+    }
+        body > .loginPanel > form > .row {
+            display: flex;
+            flex-flow: row wrap;
+        }
+        body > .loginPanel > form > .row > input[type="text"]{
+            margin: 0 15px;
+        }
+        body > .loginPanel > form > .row:nth-child(2){
+            font-size: 16px;
+            margin: 10px 0;
+            padding: 3px 5px;        
+        }
+        body > .loginPanel > form > .row > button,
+        body > .creationArticle > form > .row > button{
+            width: 100%;
+            margin-top: 15px;
+            padding : 10px;
+            font-size: 15px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            background: #0a7922;
+        }
+/*  $   create
+    ***********/
+        body > .creationArticle{
+            height: 100vh;
+            width: 100vw;
+            background: dimgrey;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+        }
+            body > .creationArticle > form{
+                display: flex;
+                flex-flow: column wrap;
+                width: 500px;
+                background: white;
+                border-radius: 4px;
+                padding: 10px;
+                margin-top: 20px;
+            }
+                body > .creationArticle > form > .row{
+                    display: flex;
+                    flex-flow: row wrap;
+                    align-items: center;
+                }
+                body > .creationArticle > form > .row:not(:first-child):not(:last-child){
+                    margin-top: 10px
+                }
+                    body > .creationArticle > form > .row > label{
+                        flex: 1 1 0;
+                    }
+                    body > .creationArticle > form > .row > input,
+                    body > .creationArticle > form > .row > textarea{
+                        flex: 2 1 0;
+                        padding: 3px 5px;
+                    }
+                    body > .creationArticle > form > .row > textarea{
+                        resize: none;
+                        height: 50px;
+                    }
+                    body > .creationArticle > form > .row > *:nth-child(3){
+                        flex: 0 0 0;
+                    }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/master.css">
+    <title>Document</title>
+</head>
+<body>
+    {{--  <h1>Hello {{username}}</h1>  --}}
+
+    <section class="loginPanel">
+        <form action="/create" method="GET">
+            <div class="row">        
+                <label for="login"> Nom d'utilisateur : </label>
+                <input type="text" id="login" name="login">
+            </div>
+
+            @if(loginError)
+            <div class="row error"><span>{{loginError}}</span></div>
+            @endif
+            <div class="row"><button>Entrer</button></div>
+        </form>
+    </section>
+</body>
+</html>

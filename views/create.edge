@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/master.css">
+    <title>Création d'article</title>
+</head>
+<body>
+    <section class="creationArticle">
+        <form action="/list" action="POST" id="formulaireCreationArticle">
+            <div class="row">
+                <label for="name">Nom de L'article</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="row">
+                <label for="prix">Prix</label>
+                <input type="number" name="prix" id="prix"><span>€</span>
+            </div>
+            <div class="row">
+                <label for="description">description</label>
+                <textarea name="description" id="description"></textarea>
+            </div>
+            <div class="row"><button>Enregistrez l'article</button></div>
+        </form>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="/js/create.js"></script>
+</body>
+</html>
