@@ -26,7 +26,7 @@ const app = express();
 
 // Reviews views
 app.use(require("express-edge"));
-app.set("views", `${__dirname}/views`);
+app.set("views", join(__dirname, "views"));
 
 // Serve static assets to /public directory
 // app.use(serv(join(__dirname, "public")));
@@ -74,7 +74,7 @@ app.get("/", (req, res) => {
 
 app.post("/create", (req, res) => {
     console.log("create() ");
-    res.renderS("/create");
+    res.render("create");
     // const createHtml = res.render("create");
     // res.redirect(createHtml);
 });
