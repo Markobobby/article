@@ -1,4 +1,18 @@
 @layout('layout')
 @section('content')
-    <h1>Articles</h1>
+    <div id="head">
+        <button id="deco">Déconnexion</button>
+        <button id="addArticle">Ajouter un article</button>
+    </div>
+    <div class="listOfArticle">
+        @each(article in articles)
+        <div class="articleContainer">
+            <span>Nom : {{article.name}}</span>
+            <span>Prix : {{article.prix}} €</span>
+            <span>description : {{article.desc}}</span>
+        </div> 
+        @endeach
+    </div>
+
+    <script src="/js/list.js"></script>
 @endsection

@@ -1,6 +1,6 @@
 // Require Node.JS Dependencies
 const { join } = require("path");
-const { writeFile } = require("fs").promises;
+const { writeFile, readFile } = require("fs").promises;
 
 // Require Third-party dependencies
 const express = require("express");
@@ -56,7 +56,7 @@ function isNotAuthenticated(req, res, next) {
 
 // Root
 app.get("/", isNotAuthenticated, (req, res) => {
-    res.render("home", { login: req.session.login });
+    res.render("home", { login: "marko, admin, renaud" });
 });
 
 // Login
@@ -65,7 +65,6 @@ app.post("/login", (req, res) => {
     if (typeof login !== "string") {
         return res.json({ error: "Merci de fournir une chaîne de caractères valide!" });
     }
-    console.log(`login: ${login}`);
 
     if (req.session.login !== undefined) {
         return res.json({ error: "Déjà authentifié !" });
@@ -86,29 +85,50 @@ app.post("/logout", isAuthenticated, (req, res) => {
 
 // Page de création d'un article
 app.get("/create", isAuthenticated, (req, res) => {
-    console.log("create route matched!");
+    console.log(req.session.article);
     res.render("create", req.session.article);
 });
 
 // Sauvegarder un nouvelle article!
 app.post("/save", (req, res) => {
     const article = req.body.article;
-
-    articles.push(article);
-    writeFile("./data/articles.json", JSON.stringify(articles, null, 4)).then(() => {
-        console.log("Articles sauvegarder avec succès!");
-    }).catch(console.error);
-
-    // remettre à zero article session
-    req.session.article = undefined;
-
-    res.json({ error: null });
+    const error = [];
+    const err = {};
+    console.log(article);
+    if (article.isAutoSave) {
+        console.log("isAutoSave");
+        req.session.article = article;
+        console.log("session.article : ");
+        console.log(req.session.article);
+        res.json(req.session.article);
+    } 
+    else {
+        if (article.name === "" ) {
+            error.push("vous devez renseigner un nom");
+        } else if (article.prix === "") {
+            error.push("Vous devez renseigner un");
+            err.error = error;
+        } else {
+            articles.push(article);
+            console.log("write");
+            writeFile("./data/articles.json", JSON.stringify(articles, null, 4)).then(() => {
+                console.log("Articles sauvegarder avec succès!");
+            }).catch(console.error);
+            
+            err.error = null;
+        }
+        // remettre à zero article session
+        req.session.article = undefined;
+        res.json(err);
+    }
 });
 
 // Liste des articles
-app.get("/articles", isAuthenticated, (req, res) => {
-    console.log("articles route matched!");
-    res.render("articles", articles);
+app.get("/list", isAuthenticated, async(req, res) => {
+    const list = {};
+    const data = await readFile("./data/articles.json", "utf-8");
+    list.articles = JSON.parse(data);
+    res.render("articles", list);
 });
 
 app.listen(3000);

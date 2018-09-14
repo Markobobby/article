@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function DOMReady() {
     form.addEventListener("submit", function submit(event) {
         event.preventDefault();
         const login = inputLogin.value;
-        console.log(`login: ${login}`);
         fetch("/login", {
             method: "POST",
             headers: {
@@ -23,12 +22,5 @@ document.addEventListener("DOMContentLoaded", function DOMReady() {
                 }
                 window.location.href = "/create";
             });
-        // Send HTTP Post request here!
     });
-
-    // let x = 1;
-    // setInterval(() => {
-    //     console.log("rafaichissement : %s", x);
-    //     x++;
-    // }, 60000);
 });

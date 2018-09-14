@@ -1,22 +1,31 @@
 @layout('layout')
 @section('content')
+    <div id="head">
+        <button id="deco">Déconnexion</button>
+    </div>
     <section class="creationArticle">
-        <form action="/list" action="POST" id="formulaireCreationArticle">
+        <form action="POST" id="formulaireCreationArticle">
+            @if(isAutoSave)
+            <span>{{name}}</span>
+            @endif
             <div class="row">
                 <label for="name">Nom de L'article</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="inputName" value="{{name}}">
             </div>
             <div class="row">
                 <label for="prix">Prix</label>
-                <input type="number" name="prix" id="prix"><span>€</span>
+                <input type="number" name="prix" id="inputPrix" value="{{prix}}"><span>€</span>
             </div>
             <div class="row">
                 <label for="description">description</label>
-                <textarea name="description" id="description"></textarea>
+                <textarea name="description" id="description" >{{desc}}</textarea>
             </div>
-            <div class="row"><button>Enregistrez l'article</button></div>
+            <div class="row">
+                <button id="cancel">Annuler</button>
+                <button id="register">Enregistrez l'article</button>
+            </div>
         </form>
     </section>
-
+    
     <script src="/js/create.js"></script>
 @endsection

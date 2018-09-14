@@ -1,11 +1,6 @@
 html, body{
     margin :0;
     padding : 0;
-    background: dimgrey;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 .error{
@@ -15,7 +10,15 @@ html, body{
 }
 /*  $   Login
     ***********/
-    body > .loginPanel {
+    #container {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: dimgrey;
+    }
+    #container > .loginPanel {
         display: flex;
         flex-direction: column;
         background: #23406d;
@@ -28,20 +31,25 @@ html, body{
         border: 1px solid #1d3f73;
         box-shadow: 0 0 4px 2px hsl(216, 37%, 31%);
     }
-        body > .loginPanel > form > .row {
+        #container > .loginPanel > form > .row {
             display: flex;
             flex-flow: row wrap;
         }
-        body > .loginPanel > form > .row > input[type="text"]{
+            #container > .loginPanel > form > span{
+                display: block;
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+        #container > .loginPanel > form > .row > input[type="text"]{
             margin: 0 15px;
         }
-        body > .loginPanel > form > .row:nth-child(2){
+        #container > .loginPanel > form > .row:nth-child(2){
             font-size: 16px;
             margin: 10px 0;
             padding: 3px 5px;        
         }
-        body > .loginPanel > form > .row > button,
-        body > .creationArticle > form > .row > button{
+        #container > .loginPanel > form > .row > button{
             width: 100%;
             margin-top: 15px;
             padding : 10px;
@@ -51,6 +59,9 @@ html, body{
             font-weight: bold;
             background: #0a7922;
         }
+/*  $   header
+    ***********/
+
 /*  $   create
     ***********/
         body > .creationArticle{
@@ -75,6 +86,9 @@ html, body{
                     flex-flow: row wrap;
                     align-items: center;
                 }
+                body > .creationArticle > form > .row:last-child{
+                    justify-content: space-around;
+                }
                 body > .creationArticle > form > .row:not(:first-child):not(:last-child){
                     margin-top: 10px
                 }
@@ -92,4 +106,63 @@ html, body{
                     }
                     body > .creationArticle > form > .row > *:nth-child(3){
                         flex: 0 0 0;
+                        margin-left: 5px;
                     }
+                    .creationArticle > form > .row > button{
+                        margin-top: 15px;
+                        padding : 10px;
+                        font-size: 15px;
+                        border: none;
+                        color: white;
+                        font-weight: bold;
+                        background: #0a7922;
+                    }
+                    .creationArticle > form > .row > #cancel{
+                        flex: 1 1 100px;
+                        background: #949494;
+                    }
+                    .creationArticle > form > .row > #register{
+                        flex: 2 1 200px;
+                        margin-left: 15px;
+                    }
+
+                    #inputName, #description{
+                        margin-right: 15px;
+                    }
+/*  $   articles
+    ***************/
+#head{
+    height: 50px;
+    background: #1d3f73;
+    display: flex;
+    flex-flow: row-reverse wrap-reverse;
+    justify-content: end;
+    align-items : center;
+    padding: 0 5px;
+}
+    #head > button{
+        font-size: 15px;
+        border: none;
+        color: white;
+        background: #0a7922;
+        padding: 5px;
+    }
+    #head > button:first-child{
+        background :#923e3e;
+    }
+    #head > button:not(:last-child){
+        margin-left: 5px;
+    }
+.listOfArticle{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+}
+    .articleContainer{
+        display: flex;
+        flex-flow: column wrap;
+        padding: 10px;
+        margin : 5px 5px;
+        background: #ced7e4;
+        max-width: 200px;
+    }

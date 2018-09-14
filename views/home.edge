@@ -1,21 +1,20 @@
 @layout('layout')
 @section('content')
-    @if(login)
-    <h1>Hello {{login}} </h1>
-    @endif
+    <div id="container">
+        <section class="loginPanel">        
+            <form id="formLogin" method="POST">
+                <div class="row">
+                    <label for="login"> Nom d'utilisateur : </label>
+                    <input type="text" id="inputLogin" name="login">
+                </div>
 
-    <section class="loginPanel">
-    <form id="formLogin" method="POST">
-        <div class="row">
-            <label for="login"> Nom d'utilisateur : </label>
-            <input type="text" id="inputLogin" name="login">
-        </div>
-
-        @if(loginError)
-        <div class="row error"><span>{{loginError}}</span></div>
-        @endif
-        <div class="row"><button>Entrer</button></div>
-    </form>
-    </section>
+                @if(loginError)
+                <div class="row error"><span>{{loginError}}</span></div>
+                @endif
+                <span>login valies : {{ login }}</span>
+                <div class="row"><button>Entrer</button></div>
+            </form>
+        </section>
+    </div>
     <script src="/js/home.js"></script>
 @endsection
