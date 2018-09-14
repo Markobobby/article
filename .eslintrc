@@ -1,7 +1,8 @@
 {
     "env": {
         "es6": true,
-        "node": true
+		"node": true,
+		"browser": true
     },
     "parserOptions": {
         "ecmaVersion": 8,
@@ -26,7 +27,7 @@
         "array-callback-return": "error",
         "block-scoped-var": "error",
         "class-methods-use-this": "error",
-        "consistent-return": "error",
+        "consistent-return": "off",
         "curly": "error",
         "default-case": "error",
         "dot-location": [
